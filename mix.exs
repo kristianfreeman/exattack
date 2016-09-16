@@ -3,6 +3,7 @@ defmodule ExAttack.Mixfile do
 
   def project do
     [app: :exattack,
+     description: "A Plug to protect against bad clients",
      version: "0.1.0",
      elixir: "~> 1.3",
      build_embedded: Mix.env == :prod,
