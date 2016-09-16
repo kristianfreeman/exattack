@@ -1,14 +1,31 @@
 defmodule ExAttack.Mixfile do
   use Mix.Project
 
+  @url_github "https://github.com/imkmf/exattack"
+
   def project do
-    [app: :exattack,
-     description: "A Plug to protect against bad clients",
-     version: "0.1.0",
-     elixir: "~> 1.3",
-     build_embedded: Mix.env == :prod,
-     start_permanent: Mix.env == :prod,
-     deps: deps()]
+    [
+      app: :exattack,
+      description: "A Plug to protect against bad clients",
+      package: %{
+        files: [
+          "lib",
+          "mix.exs",
+          "LICENSE",
+          "README.md"
+        ],
+        licenses: [ "apache2" ],
+        links: %{
+          "GitHub" => @url_github
+        },
+        maintainers: [ "Kristian Freeman" ]
+      },
+      version: "0.1.0",
+      elixir: "~> 1.3",
+      build_embedded: Mix.env == :prod,
+      start_permanent: Mix.env == :prod,
+      deps: deps()
+    ]
   end
 
   # Configuration for the OTP application
@@ -30,7 +47,8 @@ defmodule ExAttack.Mixfile do
   # Type "mix help deps" for more examples and options
   defp deps do
     [
-      {:cachex, "~> 1.2.2"}
+      {:cachex, "~> 1.2.2"},
+      {:ex_doc, ">= 0.0.0", only: :dev}
     ]
   end
 end
