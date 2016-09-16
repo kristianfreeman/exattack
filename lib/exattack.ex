@@ -1,18 +1,10 @@
 defmodule ExAttack do
-  use Supervisor
+  @moduledoc """
+  ExAttack is Plug middleware for server protection.
+  It's heavily based on rack-attack in the Ruby world.
 
-  def start(_type, _args) do
-    ExAttack.start_link
-  end
-
-  def start_link do
-    Supervisor.start_link(__MODULE__, :ok)
-  end
-
-  def init(:ok) do
-    children = [
-      worker(Cachex, [:exattack_cache, []])
-    ]
-    supervise(children, strategy: :one_for_one)
-  end
+  ExAttack blocks "bad clients" by throttling. Other
+  additions (safelists, blacklists) will be added in
+  future versions.
+  """
 end
